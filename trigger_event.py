@@ -28,6 +28,8 @@ def _main():
                         help='check DEPOSITED sbid instead of the default RELEASED sbid')
     parser.add_argument('-e', '--email', default=None, nargs='+', 
                         help='send email notification to a list of email addresses')
+    parser.add_argument('-r', '--refresh-rate', default=600, type=int, 
+                        help='Refresh rate for data checking in unit of seconds. Default is every 10min')
     parser.add_argument('-v', '--verbose', action='store_true', 
                         help='make it verbose')
     args = parser.parse_args()
@@ -76,7 +78,7 @@ def _main():
         else:
             log.info('----------------------------')
 
-        time.sleep(600)
+        time.sleep(args.refresh_rate)
 
 
 
